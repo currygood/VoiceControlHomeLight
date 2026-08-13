@@ -1,0 +1,7 @@
+## ESP-IDF Component Registry Dependencies
+## ESP-IDF v5.2.6
+
+dependencies:
+  espressif/esp-sr: "^2.0.0"
+  espressif/esp_websocket_client: "^1.2.4"
+  esphome/micro-opus: "^0.4.1"
