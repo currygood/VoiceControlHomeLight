@@ -14,9 +14,8 @@ list(APPEND SOURCES ${SOURCES_C} ${SOURCES_CPP})
 idf_component_register(
     SRCS ${SOURCES}
     INCLUDE_DIRS "." ${MID_INCLUDE_DIRS}
-    REQUIRES driver app_update esp_https_ota esp_partition
+    REQUIRES driver app_update esp_https_ota esp_partition esp_http_client json mbedtls
 )
-
 
 component_compile_options(-ffast-math -O3 -Wno-error=format=-Wno-format)
 add_compile_options(-fdiagnostics-color=always)

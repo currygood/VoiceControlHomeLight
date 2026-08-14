@@ -11,6 +11,7 @@
 #include "OLED.h"
 #include "i2c_driver.h"
 #include "amplifier.h"
+#include "OTA_Update.h"
 
 #define TAG "Main"
 
@@ -267,8 +268,47 @@ void app_main(void)
 		}
 	}
 
-	// 初始化并且连接wifi
+	// 初始化 OTA_Update 模块（仅读取版本号与配置，不访问网络）
+	ota_update_config_t ota_config = {0};
+	bool ota_ready = false;
+	err = OTA_Update_Init(&ota_config);
+	if(err != ESP_OK)
+	{
+		ESP_LOGE(TAG, "OTA_Update init failed: %s", esp_err_to_name(err));
+	}
+	else
+	{
+		ota_ready = true;
+		ESP_LOGI("+++++Version+++++", "Local firmware version: %s", OTA_Update_GetLocalVersion());
+	}
+
+	// 初始化并且连接wifi（无凭据时会进入 AP 配网模式）
 	WifiManager_Wifi_Init();
+
+	// AP 配网完成前 OTA 不能开始，阻塞等待 WiFi 真正连接成功
+	while(!WifiManager_IsConnected())
+	{
+		ESP_LOGI(TAG, "Waiting for WiFi connection before OTA...");
+		vTaskDelay(pdMS_TO_TICKS(2000));
+	}
+
+	// 新固件首次启动且 WiFi 正常后，确认当前固件有效，取消自动回滚
+	err = OTA_Update_MarkAppValid();
+	if(err != ESP_OK)
+	{
+		ESP_LOGW(TAG, "OTA mark app valid failed: %s", esp_err_to_name(err));
+	}
+
+	if(ota_ready)
+	{
+		// 同步检查升级：有新版本会下载、校验并重启；无新版本返回 ESP_OK 后继续初始化
+		err = OTA_Update_CheckAndUpgrade();
+		if(err != ESP_OK)
+		{
+			ESP_LOGW(TAG, "OTA check failed, continue boot: %s", esp_err_to_name(err));
+		}
+	}
+
 
 	// 初始化 LED 控制模块
 	err = LED_Control_Init();
