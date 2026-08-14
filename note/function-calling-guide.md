@@ -1,5 +1,13 @@
 # 豆包实时语音 — 添加 Function Calling 支持
 
+
+
+注意注意注意！！！
+
+这个1.2.6.1版本，也就是从火山[豆包语音](https://console.volcengine.com/speech/new/setting/activate?projectName=default) 这里找的文档是不支持Function Calling的，他说是支持，但是根本不支持，要去github上找到1.2.6.0的版本才行。具体直接看`realtime_duplex.md`这个文件，也在这个note文件夹下面。github链接为：https://github.com/GizClaw/doubao-speech-go/blob/main/docs/realtime_duplex.md
+
+
+
 ## 概述
 
 豆包端到端实时语音 API 支持 Function Calling（又叫 Tool Use），让 AI 能调用 ESP32 上的本地功能（如控制灯、读取传感器）。整个链路：

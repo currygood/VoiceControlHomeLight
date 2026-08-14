@@ -16,7 +16,7 @@
 #define TAG "Main"
 
 #define AI_CLOUD_URL "wss://openspeech.bytedance.com/api/v3/duplex/realtime/dialogue"
-#define AI_CLOUD_TOKEN "49a593a3-d4ab-4693-837b-fc39514d4aea"
+#define AI_CLOUD_TOKEN "your-token(API-Key)"
 
 #define AUDIO_STREAM_BUF_SIZE 32000
 
