@@ -49,7 +49,7 @@
 
 /* ======================== 巴法云配置 =========================================== */
 
-#define BEMFA_MQTT_CLIENT_ID 					"463dcbeda62b00a215786d00a8df66b1"
+#define BEMFA_MQTT_CLIENT_ID 					"your-client-id"
 #define BEMFA_MQTT_BROKER_URL 					"mqtt://bemfa.com:9501"
 
 
