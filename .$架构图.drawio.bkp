@@ -1,6 +1,6 @@
 <mxfile host="Electron">
   <diagram name="第 1 页" id="nF7I5xyWTskVIB9MbDC7">
-    <mxGraphModel dx="1664" dy="989" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2571" dy="1529" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -361,23 +361,6 @@
         </mxCell>
         <mxCell id="yryjVYY83eSLF-L0tkFF-34" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;pre style=&quot;text-align: start;&quot;&gt;{&lt;br/&gt;  &quot;sha256&quot;: &quot;75a8c4c80a4caa04883714c954eca5491e8c2ce56e74dbf490c3b31d41233640&quot;,&lt;br/&gt;  &quot;url&quot;: &quot;http://192.168.4.16:5000/ota/download/1.2.0.bin&quot;,&lt;br/&gt;  &quot;version&quot;: &quot;1.2.0&quot;&lt;br/&gt;}&lt;/pre&gt;" vertex="1">
           <mxGeometry height="230" width="480" x="1150" y="737.5" as="geometry" />
-        </mxCell>
-        <mxCell id="wXKG4d63BkZNK_uTGmeA-4" edge="1" parent="1" source="wXKG4d63BkZNK_uTGmeA-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="590" y="1180" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="wXKG4d63BkZNK_uTGmeA-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Bemfa云接入米家" vertex="1">
-          <mxGeometry height="130" width="202" x="337" y="1115" as="geometry" />
-        </mxCell>
-        <mxCell id="wXKG4d63BkZNK_uTGmeA-3" edge="1" parent="1" source="wXKG4d63BkZNK_uTGmeA-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="wXKG4d63BkZNK_uTGmeA-1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="wXKG4d63BkZNK_uTGmeA-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="MQTT组件" vertex="1">
-          <mxGeometry height="40" width="80" x="176" y="1160" as="geometry" />
-        </mxCell>
-        <mxCell id="wXKG4d63BkZNK_uTGmeA-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="LED_Control" vertex="1">
-          <mxGeometry height="40" width="100" x="590" y="1159" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

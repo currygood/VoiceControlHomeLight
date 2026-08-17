@@ -14,7 +14,7 @@ list(APPEND SOURCES ${SOURCES_C} ${SOURCES_CPP})
 idf_component_register(
     SRCS ${SOURCES}
     INCLUDE_DIRS ${MID_INCLUDE_DIRS}
-    REQUIRES driver Audio_Stream middlewares esp-sr esp_http_client esp_websocket_client json lwip
+    REQUIRES driver Audio_Stream middlewares esp-sr esp_http_client esp_websocket_client json lwip mqtt
 )
 
 # 如果需要使用esp-sr的tts再添加以下代码

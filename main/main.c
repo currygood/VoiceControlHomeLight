@@ -12,6 +12,7 @@
 #include "i2c_driver.h"
 #include "amplifier.h"
 #include "OTA_Update.h"
+#include "BemFa.h"
 
 #define TAG "Main"
 
@@ -351,6 +352,9 @@ void app_main(void)
 	vTaskDelay(pdMS_TO_TICKS(2000));
 	// 启动OLED显示任务
 	xTaskCreate(Task_OLED_Show,"OLED_Show",2048,NULL,4,NULL);
+
+	// 启动巴法云任务
+	xTaskCreate(BemFaMQTT_Task,"BemFaMQTT_Task",8192,NULL,6,NULL);
 
 	while(1)
 	{
