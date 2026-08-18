@@ -33,6 +33,25 @@
 
 同时，本项目旨在深入学习 **ESP32-S3 与 AI 大模型互联**的软硬件协同设计，涵盖音频采集、播放、显示、PWM 调光、OTA 升级等全栈功能，为后续分布式智能家居系统奠定基础。
 
+## ⚠️ 关键配置（必填）
+
+> **在使用前，必须修改以下两个宏定义，否则无法正常连接云端服务！**
+
+| 宏定义 | 位置 | 用途 | 说明 |
+| :----- | :--- | :--- | :--- |
+| `AI_CLOUD_TOKEN` | [AI_Cloud.c](components/App/AI_Coud/AI_Cloud.c) | **接入豆包端对端实时语音的认证** | 填写你的 API-Key（Token），用于与豆包（ByteDance）大模型建立 WebSocket 全双工实时语音通道 |
+| `BEMFA_MQTT_CLIENT_ID` | [BemFa.c](components/App/BemFa_MQTT/BemFa.c) | **巴法云接入小米智能家居** | 填写你的客户端 ID，用于连接巴法云 MQTT 服务器，实现米家 App / 小爱同学控制灯光 |
+
+### 配置示例
+
+```c
+// components/App/AI_Coud/AI_Cloud.c
+#define AI_CLOUD_TOKEN "your-api-key-here"
+
+// components/App/BemFa_MQTT/BemFa.c
+#define BEMFA_MQTT_CLIENT_ID "your-client-id-here"
+```
+
 ## 功能特性
 
 - 🎤 **本地 ASR 唤醒词**：使用 ESP-SR 框架实现"小鱼同学"语音唤醒；
