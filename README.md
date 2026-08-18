@@ -45,7 +45,7 @@
 ### 配置示例
 
 ```c
-// components/App/AI_Coud/AI_Cloud.c
+// main/main.c
 #define AI_CLOUD_TOKEN "your-api-key-here"
 
 // components/App/BemFa_MQTT/BemFa.c
