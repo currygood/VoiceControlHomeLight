@@ -39,7 +39,7 @@
 
 | 宏定义 | 位置 | 用途 | 说明 |
 | :----- | :--- | :--- | :--- |
-| `AI_CLOUD_TOKEN` | [AI_Cloud.c](components/App/AI_Coud/AI_Cloud.c) | **接入豆包端对端实时语音的认证** | 填写你的 API-Key（Token），用于与豆包（ByteDance）大模型建立 WebSocket 全双工实时语音通道 |
+| `AI_CLOUD_TOKEN` | [main.c](components/App/AI_Coud/AI_Cloud.c) | **接入豆包端对端实时语音的认证** | 填写你的 API-Key（Token），用于与豆包（ByteDance）大模型建立 WebSocket 全双工实时语音通道 |
 | `BEMFA_MQTT_CLIENT_ID` | [BemFa.c](components/App/BemFa_MQTT/BemFa.c) | **巴法云接入小米智能家居** | 填写你的客户端 ID，用于连接巴法云 MQTT 服务器，实现米家 App / 小爱同学控制灯光 |
 
 ### 配置示例
