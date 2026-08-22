@@ -6,7 +6,7 @@ foreach(child ${children})
         list(APPEND MID_INCLUDE_DIRS ${child})
     endif()
 endforeach()
-  
+   
 file(GLOB_RECURSE SOURCES_C "*.c")
 file(GLOB_RECURSE SOURCES_CPP "*.cpp")
 list(APPEND SOURCES ${SOURCES_C} ${SOURCES_CPP})

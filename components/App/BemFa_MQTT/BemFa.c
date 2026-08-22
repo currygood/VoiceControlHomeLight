@@ -49,7 +49,7 @@
 
 /* ======================== 巴法云配置 =========================================== */
 
-#define BEMFA_MQTT_CLIENT_ID 					"your-client-id"
+#define BEMFA_MQTT_CLIENT_ID 					"your-token"
 #define BEMFA_MQTT_BROKER_URL 					"mqtt://bemfa.com:9501"
 
 
@@ -220,7 +220,7 @@ esp_err_t BemfaMQTT_Report_State(void)
             snprintf(payload, sizeof(payload), "off");
         }
 
-        esp_mqtt_client_publish(bemfa_mqtt_client, topics[i], payload, 0, 1, 0); /* QoS1, 不使用retain避免循环 */
+        esp_mqtt_client_publish(bemfa_mqtt_client, topics[i], payload, 0, 2, 1); /* QoS2, 使用retain */
     }
     return ESP_OK;
 }
@@ -260,7 +260,10 @@ void BemFaMQTT_Task(void *pvParameters)
 	(void)pvParameters;
 	
 	// 等待wifi连接成功，不成功则阻塞，因为不连接wifi无法连接巴法云
-	while(!WifiManager_IsConnected());
+	while(!WifiManager_IsConnected())
+	{
+		vTaskDelay(pdMS_TO_TICKS(350));
+	}
 	
 	Bemfa_MQTT_Init();
 

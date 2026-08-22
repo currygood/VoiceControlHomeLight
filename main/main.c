@@ -13,11 +13,12 @@
 #include "amplifier.h"
 #include "OTA_Update.h"
 #include "BemFa.h"
+#include "HardKeyControlLight.h"
 
 #define TAG "Main"
 
 #define AI_CLOUD_URL "wss://openspeech.bytedance.com/api/v3/duplex/realtime/dialogue"
-#define AI_CLOUD_TOKEN "your-token(API-Key)"
+#define AI_CLOUD_TOKEN "you-token"
 
 #define AUDIO_STREAM_BUF_SIZE 32000
 
@@ -318,6 +319,9 @@ void app_main(void)
 		ESP_LOGE(TAG, "LED Control init failed: %s", esp_err_to_name(err));
 	}
 
+	// 初始化按键控制灯模块
+	HardKeyControlLight_Init();
+
 	// 初始化I2C总线 然后初始化OLED
 	err = I2c_Init_Bus(I2C_NUM_0,I2C_SDA_GPIO,I2C_SCL_GPIO,I2C_FREQ,&i2c_bus_handle);
 	if(err != ESP_OK)
@@ -329,6 +333,9 @@ void app_main(void)
 	{
 		ESP_LOGE(TAG, "OLED init failed: %s", esp_err_to_name(err));
 	}
+
+	// 开始按键控制灯模块
+	HardKeyControlLight_Start();
 
 	// 初始化音频流模块 里面有初始化麦克风
 	AudioStream_Init(AUDIO_STREAM_BUF_SIZE);
@@ -351,7 +358,7 @@ void app_main(void)
 	// 等待上面的初始化完成
 	vTaskDelay(pdMS_TO_TICKS(2000));
 	// 启动OLED显示任务
-	xTaskCreate(Task_OLED_Show,"OLED_Show",2048,NULL,4,NULL);
+	xTaskCreate(Task_OLED_Show,"OLED_Show",4096,NULL,4,NULL);
 
 	// 启动巴法云任务
 	xTaskCreate(BemFaMQTT_Task,"BemFaMQTT_Task",8192,NULL,6,NULL);
